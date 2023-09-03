@@ -65,6 +65,22 @@
     opacity: 0.15;
 }
 
+.large-screen {
+    display: block;
+
+    @media (max-width: 640px) {
+        display: none;
+    }
+}
+
+.small-screen {
+    display: none;
+
+    @media (max-width: 640px) {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 640px) {
     .main {
         padding: 0;
