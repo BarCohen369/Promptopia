@@ -6,9 +6,9 @@ import Image from 'next/image'
 
 export const DesktopNav = ({isUserLoggedIn, handleLogout}: navProps) => {
     return (
-        <div className="hidden sm:flex large-screen">
+        <div className="large-screen-f">
             {isUserLoggedIn ? (
-                <div className={'flex gap-3 md:gap-5'}>
+                <div className={'logged-in-menu'}>
                     <Link href={'/create-prompt'} className={'black_btn'}>
                         Create Prompt
                     </Link>

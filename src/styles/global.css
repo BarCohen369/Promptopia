@@ -65,21 +65,38 @@
     opacity: 0.15;
 }
 
-.large-screen {
-    display: block;
-
-    @media (max-width: 640px) {
-        display: none;
-    }
+/*region Not working tailwind classes*/
+.large-screen-f {
+    @apply hidden sm:flex
 }
 
-.small-screen {
-    display: none;
-
-    @media (max-width: 640px) {
-        display: block;
-    }
+.small-screen-f {
+    @apply sm:hidden flex
 }
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+}
+
+.logged-in-menu {
+    @apply flex gap-3 md:gap-5;
+}
+
+.nav {
+    @apply flex-between w-full mb-16 pt-3
+}
+
+.nav-logo {
+    @apply flex gap-2 flex-center
+}
+
+/*endregion*/
+
 
 @media screen and (max-width: 640px) {
     .main {
