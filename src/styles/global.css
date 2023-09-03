@@ -95,6 +95,10 @@
     @apply flex gap-2 flex-center
 }
 
+.logout-btn-mobile {
+    @apply mt-5 w-full black_btn
+}
+
 /*endregion*/
 
 
@@ -174,7 +178,7 @@
 }
 
 .dropdown {
-    @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+    @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end border border-black shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;
 }
 
 .dropdown_link {

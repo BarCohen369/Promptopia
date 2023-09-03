@@ -7,6 +7,8 @@ import {useEffect, useState} from 'react'
 import {ClientSafeProvider, getProviders, LiteralUnion, signIn} from 'next-auth/react'
 // @ts-ignore
 import {BuiltInProviderType} from 'next-auth/providers'
+import {MobileNavLink} from '@components/MobileNavLink'
+import {MobileNav} from '@components/MobileNav'
 
 export const Nav = () => {
     const isUserLoggedIn = true
@@ -44,6 +46,7 @@ export const Nav = () => {
             </Link>
 
             <DesktopNav {...{isUserLoggedIn, providers, handleLogout, handleLogin}} />
+            <MobileNav {...{isUserLoggedIn, providers, handleLogout, handleLogin}} />
         </nav>
     )
 }

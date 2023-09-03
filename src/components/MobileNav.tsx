@@ -43,7 +43,7 @@ export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}
                                 <button
                                     type={'button'}
                                     onClick={handleLogout}
-                                    className={'mt-5 w-full black_btn'}
+                                    className={'logout-btn-mobile'}
                                 >
                                     Logout
                                 </button>
