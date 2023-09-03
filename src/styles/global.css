@@ -71,7 +71,7 @@
 }
 
 .small-screen-f {
-    @apply sm:hidden flex
+    @apply sm:hidden flex relative
 }
 
 .flex-col {
