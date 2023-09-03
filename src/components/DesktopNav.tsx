@@ -4,7 +4,7 @@ import Link from 'next/link'
 import {navProps} from '@/types/navTypes'
 import Image from 'next/image'
 
-export const DesktopNav = ({isUserLoggedIn, handleLogout}: navProps) => {
+export const DesktopNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}: navProps) => {
     return (
         <div className="large-screen-f">
             {isUserLoggedIn ? (
@@ -28,9 +28,19 @@ export const DesktopNav = ({isUserLoggedIn, handleLogout}: navProps) => {
                         />
                     </Link>
                 </div>
-
                 ) : (
-                <></>
+                <>
+                    {providers && Object.values(providers).map((provider) => (
+                        <button
+                            key={provider.name}
+                            type="button"
+                            className="black_btn"
+                            onClick={() => handleLogin(provider.id, '/')}
+                        >
+                            {provider.name}
+                        </button>
+                    ))}
+                </>
                 )}
         </div>
     )
