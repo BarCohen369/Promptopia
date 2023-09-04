@@ -1,4 +1,5 @@
 import '@styles/global.css'
+import {Nav} from '@components/Nav'
 export const metadata = {
     title: 'Promptopia',
     description: 'Discover, create, and share AI prompts.',
@@ -12,6 +13,7 @@ const RootLayout = ({children} : {children: React.ReactNode}) => {
             </div>
 
             <main className="app">
+                <Nav/>
                 {children}
             </main>
             </body>
