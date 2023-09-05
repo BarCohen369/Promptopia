@@ -9,8 +9,8 @@ export const DesktopNav = ({isUserLoggedIn, handleLogout, handleLogin, providers
         <div className="large-screen-f">
             {isUserLoggedIn ? (
                 <div className={'logged-in-menu'}>
-                    <Link href={'/create-prompt'} className={'black_btn'}>
-                        Create Prompt
+                    <Link href={'/create-post'} className={'black_btn'}>
+                        Create Post
                     </Link>
 
                     <button type={'button'} onClick={handleLogout} className={'outline_btn'}>

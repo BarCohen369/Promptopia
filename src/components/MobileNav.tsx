@@ -30,10 +30,10 @@ export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers,
                                 Profile
                             </MobileNavLink>
                             <MobileNavLink
-                                href={'/create-prompt'}
+                                href={'/create-post'}
                                 {...{setToggleDropdown}}
                             >
-                                Create Prompt
+                                Create Post
                             </MobileNavLink>
                             <MobileNavLink
                                 as={'div'}
