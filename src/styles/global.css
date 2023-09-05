@@ -113,9 +113,22 @@
     @apply mt-5 w-full black_btn
 }
 
+.form {
+    @apply w-full mt-10 max-w-2xl flex flex-col gap-7 glassmorphism
+}
+
 .form-wrapper {
     @apply w-full max-w-full flex-col flex-start
 }
+
+.label_text {
+    @apply font-satoshi text-base text-gray-700 font-semibold
+}
+
+.text-gray-sm {
+    @apply text-sm text-gray-500 font-normal
+}
+
 /*endregion*/
 
 

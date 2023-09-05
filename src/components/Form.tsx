@@ -1,4 +1,3 @@
-export const Form = () => {
 import {FormProps} from '@/types/formTypes'
 
 export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProps) => {
@@ -12,6 +11,42 @@ export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProp
                 imagination run wild with any AI-powered platform
             </p>
 
+            <form
+                onSubmit={handleSubmit}
+                className={'form'}
+            >
+                <label>
+                    <span className="label_text">
+                        Your AI Prompt
+                    </span>
+
+                    <textarea
+                        className={'form_textarea'}
+                        value={post.prompt}
+                        onChange={(e) => setPrompt({...post, prompt: e.target.value})}
+                        placeholder={'Write your prompt here'}
+                        required
+                    />
+                </label>
+
+                <label>
+                    <span className="label_text">
+                        Tag {` `}
+                        <span className={'text-gray-sm'}>
+                            (e.g #AI, #product, #art)
+                        </span>
+                    </span>
+
+                    <input
+                        className={'form_input'}
+                        value={post.tag}
+                        onChange={(e) => setPrompt({...post, tag: e.target.value})}
+                        placeholder={'#tag'}
+                    />
+                </label>
+
+
+            </form>
         </section>
     )
 }
