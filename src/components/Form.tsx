@@ -1,4 +1,5 @@
 import {FormProps} from '@/types/formTypes'
+import Link from 'next/link'
 
 export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProps) => {
     return (
@@ -45,7 +46,18 @@ export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProp
                     />
                 </label>
 
+                <div className="btn-area">
+                    <Link href={'/'} className={'text-gray-sm'}>
+                        Cancel
+                    </Link>
 
+                    <button className={'submit_btn'}
+                            type={'submit'}
+                            disabled={submitting}
+                    >
+                        {submitting ? `${type}...` : type}
+                    </button>
+                </div>
             </form>
         </section>
     )

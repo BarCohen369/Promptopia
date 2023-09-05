@@ -121,6 +121,14 @@
     @apply w-full max-w-full flex-col flex-start
 }
 
+.submit_btn {
+    @apply px-5 py-1.5 rounded-full bg-primary-orange text-white
+}
+
+.btn-area {
+    @apply flex-end mx-3 mb-5 gap-4
+}
+
 .label_text {
     @apply font-satoshi text-base text-gray-700 font-semibold
 }
