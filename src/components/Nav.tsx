@@ -4,21 +4,21 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {DesktopNav} from '@components/DesktopNav'
 import {useEffect, useState} from 'react'
-import {ClientSafeProvider, getProviders, LiteralUnion, signIn} from 'next-auth/react'
+import {ClientSafeProvider, getProviders, LiteralUnion, signIn, useSession} from 'next-auth/react'
 // @ts-ignore
 import {BuiltInProviderType} from 'next-auth/providers'
-import {MobileNavLink} from '@components/MobileNavLink'
 import {MobileNav} from '@components/MobileNav'
 
 export const Nav = () => {
-    const isUserLoggedIn = true
+    const {data: session, status} = useSession()
+    const isUserLoggedIn = status === 'authenticated'
 
     const handleLogout = () => {
 
     }
 
     const handleLogin = (
-        providerId: LiteralUnion<BuiltInProviderType>,  callbackUrl: string
+        providerId: LiteralUnion<BuiltInProviderType>, callbackUrl: string
     ) => {
         signIn(providerId, {callbackUrl})
     }
