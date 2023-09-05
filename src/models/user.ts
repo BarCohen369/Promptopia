@@ -12,8 +12,8 @@ const UserSchema = new Schema({
         type: String,
         unique: [true, 'Username already exists'],
         required: [true, 'Username is required'],
-        match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
-            'Username must be at least 8 characters long and contain only letters, numbers, and underscores']
+        match: [/^[a-zA-Z0-9_]+$/,
+            'Username must contain only letters, numbers, and underscores']
     },
     image: {
         type: String
