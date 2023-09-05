@@ -61,7 +61,7 @@ export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}
                             className="black_btn"
                             onClick={() => handleLogin(provider.id, '/')}
                         >
-                            {provider.name}
+                            Sign In with {provider.name}
                         </button>
                     ))}
                 </>
