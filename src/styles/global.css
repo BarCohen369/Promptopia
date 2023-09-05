@@ -76,6 +76,10 @@
     @apply sm:hidden flex relative
 }
 
+.head_text_left {
+    @apply text-left head_text
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -109,6 +113,9 @@
     @apply mt-5 w-full black_btn
 }
 
+.form-wrapper {
+    @apply w-full max-w-full flex-col flex-start
+}
 /*endregion*/
 
 
@@ -150,6 +157,10 @@
 
 .desc {
     @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+}
+
+.form_desc {
+    @apply desc text-left max-w-md
 }
 
 .search_input {
