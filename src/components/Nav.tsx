@@ -45,8 +45,8 @@ export const Nav = () => {
                 <p className="logo_text">Promptopia</p>
             </Link>
 
-            <DesktopNav {...{isUserLoggedIn, providers, handleLogout, handleLogin}} />
-            <MobileNav {...{isUserLoggedIn, providers, handleLogout, handleLogin}} />
+            <DesktopNav {...{isUserLoggedIn, providers, handleLogout, handleLogin, userImage: session?.user?.image}} />
+            <MobileNav {...{isUserLoggedIn, providers, handleLogout, handleLogin, userImage: session?.user?.image}} />
         </nav>
     )
 }

@@ -7,4 +7,5 @@ export type navProps = {
     handleLogout: () => void
     handleLogin: (providerId: LiteralUnion<BuiltInProviderType>,  callbackUrl: string ) => void
     providers: Record<LiteralUnion<BuiltInProviderType>, ClientSafeProvider> | null
+    userImage: string | null | undefined
 }

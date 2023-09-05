@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {useState} from 'react'
 import {MobileNavLink} from '@components/MobileNavLink'
 
-export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}: navProps) => {
+export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers, userImage}: navProps) => {
     const [toggleDropdown, setToggleDropdown] = useState(false)
 
     return (
@@ -13,8 +13,7 @@ export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}
             {isUserLoggedIn ? (
                 <div className={'flex'}>
                     <Image
-                        /* Placeholder. user image goes here */
-                        src={'assets/images/logo.svg'}
+                        src={userImage || ''}
                         alt={'Profile'}
                         width={37}
                         height={37}

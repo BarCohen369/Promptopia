@@ -4,7 +4,7 @@ import Link from 'next/link'
 import {navProps} from '@/types/navTypes'
 import Image from 'next/image'
 
-export const DesktopNav = ({isUserLoggedIn, handleLogout, handleLogin, providers}: navProps) => {
+export const DesktopNav = ({isUserLoggedIn, handleLogout, handleLogin, providers, userImage}: navProps) => {
     return (
         <div className="large-screen-f">
             {isUserLoggedIn ? (
@@ -19,8 +19,7 @@ export const DesktopNav = ({isUserLoggedIn, handleLogout, handleLogin, providers
 
                     <Link href={'/profile'}>
                         <Image
-                            /* Placeholder. user image goes here */
-                            src={'assets/images/logo.svg'}
+                            src={userImage || ''}
                                alt={'Profile'}
                                width={37}
                                height={37}
