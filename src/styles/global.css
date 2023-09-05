@@ -85,6 +85,14 @@
     display: flex;
 }
 
+.rounded-full{
+    border-radius: 9999px;
+}
+
+.profile-image-mobile {
+    @apply rounded-full cursor-pointer
+}
+
 .logged-in-menu {
     @apply flex gap-3 md:gap-5;
 }

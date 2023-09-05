@@ -17,7 +17,7 @@ export const MobileNav = ({isUserLoggedIn, handleLogout, handleLogin, providers,
                         alt={'Profile'}
                         width={37}
                         height={37}
-                        className={'rounded-full'}
+                        className={'profile-image-mobile'}
                         onClick={() => setToggleDropdown(prevState => !prevState)}
                     />
 
