@@ -1,27 +1,27 @@
 import mongoose from 'mongoose'
 
-let isConnected = false
 const connectionOptions: mongoose.ConnectOptions = {
-    dbName: 'promptopia'
+    dbName: process.env.MONGODB_NAME
 }
 
 export const connectToDatabase = async () => {
+    let isConnected = mongoose.connection.readyState
     console.log('connecting to database...')
 
     mongoose.set('strictQuery', true)
-    if (isConnected) {
+    if (isConnected === 1) {
         console.info('DB is already connected')
-    }
+    } else {
+        try {
+            await mongoose.connect(process.env.MONGODB_URI || '',
+                connectionOptions
+            )
 
-    try {
-        await mongoose.connect(process.env.MONGODB_URI || '',
-            connectionOptions
-        )
-
-        isConnected = true
-        console.info('DB connected')
-    } catch (error) {
-        console.error(error)
+            if (mongoose.connection.readyState === 1)
+                console.info('DB connected')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
 
