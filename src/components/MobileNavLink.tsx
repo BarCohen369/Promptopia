@@ -12,9 +12,8 @@ export const MobileNavLink =
     <E extends React.ElementType = typeof Link>
     ({as, children, setToggleDropdown, ...props}:
          LinkProps<E>) => {
-    const Element = as || Link
+    const Element = as || Link as React.ComponentType<any>
 
-        // @ts-ignore
         return (
         <Element { ...props} onClick={() => setToggleDropdown(false)}>
             {children}
