@@ -1,9 +1,27 @@
 "use client"
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import {PromptCardList} from '@components/PromptCardList'
+
+export type Post = {
+    prompt: string,
+    tags: string[]
+}
 
 export const Feed = () => {
     const [searchText, setSearchText] = useState('')
+    const [posts, setPosts] = useState<Post[]>([])
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const res = await fetch('/api/prompt')
+            const data = await res.json()
+
+            setPosts(data as Post[])
+        }
+
+        fetchPosts()
+    }, [])
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     }
