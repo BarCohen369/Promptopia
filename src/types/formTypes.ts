@@ -8,17 +8,17 @@ export type FormProps = {
 
 type CreateFormProps = {
     type: 'Create'
-    setPrompt: Dispatch<SetStateAction<Post>>
+    setPost: Dispatch<SetStateAction<Post>>
     post: Post
 }
 
 type EditFormProps = {
     type: 'Edit'
-    setPrompt: Dispatch<SetStateAction<Post>>
+    setPost: Dispatch<SetStateAction<Post>>
     post: Post
 }
 
 export type Post = {
     prompt: string,
-    tag: string
+    tags: string
 }

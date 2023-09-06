@@ -19,7 +19,7 @@ const findUser = async (email: string) => {
 }
 
 export const POST = async (req: PostReqParams) => {
-    const {user: email, prompt, tag} = await req.json()
+    const {user: email, prompt, tags} = await req.json()
 
     try {
         await connectToDatabase()
@@ -27,11 +27,12 @@ export const POST = async (req: PostReqParams) => {
 
         const newPrompt = new Prompt({
             prompt,
-            tag,
+            tags,
             creator: user?._id
         })
         await newPrompt.save()
 
+        console.log('Prompt created')
         return new Response(
             JSON.stringify(
                 newPrompt

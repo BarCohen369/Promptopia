@@ -1,7 +1,7 @@
 import {FormProps} from '@/types/formTypes'
 import Link from 'next/link'
 
-export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProps) => {
+export const Form = ({type, post, setPost, submitting, handleSubmit}: FormProps) => {
     return (
         <section className={'form-wrapper'}>
             <h1 className={'head_text_left'}>
@@ -24,7 +24,7 @@ export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProp
                     <textarea
                         className={'form_textarea'}
                         value={post.prompt}
-                        onChange={(e) => setPrompt({...post, prompt: e.target.value})}
+                        onChange={(e) => setPost({...post, prompt: e.target.value})}
                         placeholder={'Write your prompt here'}
                         required
                     />
@@ -32,7 +32,7 @@ export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProp
 
                 <label>
                     <span className="label_text">
-                        Tag {` `}
+                        #Tag {` `}
                         <span className={'text-gray-sm'}>
                             (e.g #AI, #product, #art)
                         </span>
@@ -40,9 +40,9 @@ export const Form = ({type, post, setPrompt, submitting, handleSubmit}: FormProp
 
                     <input
                         className={'form_input'}
-                        value={post.tag}
-                        onChange={(e) => setPrompt({...post, tag: e.target.value})}
-                        placeholder={'#tag'}
+                        value={post.tags}
+                        onChange={(e) => setPost({...post, tags: e.target.value})}
+                        placeholder={'Separate tags with a comma (,)'}
                     />
                 </label>
 

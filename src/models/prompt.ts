@@ -7,11 +7,22 @@ const PromptSchema = new Schema({
     },
     prompt: {
         type: String,
-        required: [true, 'Prompt is required'],
+        required: [true, 'Prompt is required']
     },
-    tag: {
-        type: String,
-        required: [true, 'Tag is required']
+    tags: {
+        type: [String],
+        required: [true, 'Tags are required'],
+        validate: {
+            validator: (tags: string[]) => tags.length > 0,
+            message: 'At least one tag is required'
+        }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date
     }
 })
 

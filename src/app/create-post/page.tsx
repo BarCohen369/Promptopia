@@ -11,7 +11,7 @@ const CreatePrompt = ({}) => {
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState<Post>({
         prompt: '',
-        tag: ''
+        tags: ''
     })
 
 
@@ -24,7 +24,7 @@ const CreatePrompt = ({}) => {
                 method: 'POST',
                 body: JSON.stringify({
                     prompt: post.prompt,
-                    tag: post.tag,
+                    tags: post.tags.split(/[\s,#]+/).filter(item => item !== ""),
                     user: session?.user?.email
                 })
             })
@@ -32,14 +32,14 @@ const CreatePrompt = ({}) => {
             if (res.ok) {
                 setPost({
                     prompt: '',
-                    tag: ''
+                    tags: ''
                 })
                 router.push('/')
             }
         } catch (e) {
             console.error(e)
         } finally {
-                setSubmitting(false)
+            setSubmitting(false)
         }
     }
 
@@ -47,7 +47,7 @@ const CreatePrompt = ({}) => {
         <Form
             type={'Create'}
             post={post}
-            setPrompt={setPost}
+            setPost={setPost}
             submitting={submitting}
             handleSubmit={createPrompt}
         />
