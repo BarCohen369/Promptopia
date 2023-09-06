@@ -1,12 +1,12 @@
 import {connectToDatabase} from '@utils/database'
 import {Post} from '@/types/formTypes'
-import {Request} from 'next/dist/compiled/@edge-runtime/primitives'
 import User from '@models/user'
 import Prompt from '@models/prompt'
+import {NextRequest} from 'next/server'
 
 type PostReqParams = {
     user: string,
-} & Post & Request
+} & Post & NextRequest
 
 const findUser = async (email: string) => {
     try {
