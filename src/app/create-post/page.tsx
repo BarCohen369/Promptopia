@@ -4,10 +4,11 @@ import {Form} from '@components/Form'
 import {useState} from 'react'
 import {Post} from '@/types/formTypes'
 import {useSession} from 'next-auth/react'
-import {router} from 'next/client'
+import {useRouter} from 'next/navigation'
 
 const CreatePrompt = ({}) => {
     const {data: session} = useSession()
+    const router = useRouter()
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState<Post>({
         prompt: '',
