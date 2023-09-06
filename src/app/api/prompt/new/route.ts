@@ -14,7 +14,7 @@ const findUser = async (email: string) => {
             email
         })
     } catch (e) {
-        console.error(e)
+        console.error(e instanceof Error ? e.message : e)
     }
 }
 
@@ -40,9 +40,12 @@ export const POST = async (req: PostReqParams) => {
                 status: 201
             })
     } catch (e) {
-        console.error(e)
+        console.error(e instanceof Error ? e.message : e)
         return new Response(
-            'Failed to create prompt', {
+            `Failed to create prompt. Error: ${
+                e instanceof Error ? e.message :
+                    'Unknown error occurred'
+            }`, {
                 status: 500
             }
         )

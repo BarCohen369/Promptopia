@@ -39,8 +39,8 @@ const handler = NextAuth({
                     })
                 }
                 return true
-            } catch (error) {
-                console.error(error)
+            } catch (e) {
+                console.error(e instanceof Error ? e.message : e)
                 return false
             }
         }

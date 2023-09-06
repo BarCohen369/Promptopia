@@ -19,8 +19,8 @@ export const connectToDatabase = async () => {
 
             if (mongoose.connection.readyState === 1)
                 console.info('DB connected')
-        } catch (error) {
-            console.error(error)
+        } catch (e) {
+            console.error(e instanceof Error ? e.message : e)
         }
     }
 }
