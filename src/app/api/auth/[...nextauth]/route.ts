@@ -4,6 +4,12 @@ import {connectToDatabase} from '@utils/database'
 import User from '@models/user'
 import {UserProfile} from '@/types/userTypes'
 
+declare module 'next-auth' {
+    interface Session {
+        user: UserProfile
+    }
+}
+
 const handler = NextAuth({
     providers: [
         Google({
@@ -17,6 +23,11 @@ const handler = NextAuth({
             const sessionUser : UserProfile | null = await User.findOne({
                 email: session.user?.email
             })
+
+            session.user = {
+                ...session.user,
+                _id: sessionUser?._id
+            }
 
             return session
         },

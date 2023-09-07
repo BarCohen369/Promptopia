@@ -10,6 +10,5 @@ export type Post = {
 }
 
 export type Creator = {
-    id: never
     _id: string
 } & UserProfile

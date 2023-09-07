@@ -19,16 +19,15 @@ const findUser = async (email: string) => {
 }
 
 export const POST = async (req: PostReqParams) => {
-    const {user: email, prompt, tags} = await req.json()
+    const {user: _id, prompt, tags} = await req.json()
 
     try {
         await connectToDatabase()
-        const user = await findUser(email)
 
         const newPrompt = new Prompt({
             prompt,
             tags,
-            creator: user?._id
+            creator: _id
         })
         await newPrompt.save()
 

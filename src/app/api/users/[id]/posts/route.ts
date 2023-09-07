@@ -1,21 +1,21 @@
 import {NextRequest} from 'next/server'
 import {connectToDatabase} from '@utils/database'
 import Prompt from '@models/prompt'
-import { Post } from '@/types/feedTypes'
+import {Post} from '@/types/feedTypes'
 
 type GetParams = {
-    req: NextRequest
     params: {
-        email: string
+        id: string
     }
 }
 
-export const GET = async ({req, params: {email}}: GetParams) => {
+export const GET = async (req: NextRequest, {params}: GetParams) => {
+
     try {
         await connectToDatabase()
 
         const propmts = await Prompt.find({
-            creator: email
+            creator: params.id
         })
             .populate('creator') as Post[]
 
