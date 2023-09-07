@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {useState} from 'react'
 
 type CardParams = {
-    handleTagClick: () => void
+    handleTagClick: (tag: string) => void
     post: Post
 }
 
@@ -50,6 +50,19 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
                     width={12}
                 />
             </button>
+
+            <p className={'prompt'}>{post.prompt}</p>
+            <div className="tag_section">
+                {post.tags.map((tag) => (
+                    <button
+                        key={tag}
+                        className={'tag_btn'}
+                        onClick={() => handleTagClick(tag)}
+                    >
+                        #{tag}
+                    </button>
+                ))}
+            </div>
         </li>
     )
 }

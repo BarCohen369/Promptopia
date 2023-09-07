@@ -210,11 +210,11 @@
 }
 
 .creator_data {
-    @apply flex justify-between items-start gap-5
+    @apply flex justify-start items-start gap-5
 }
 
 .creator_image_wrapper {
-    @apply flex-1 flex justify-start items-center gap-3 cursor-pointer
+    @apply flex justify-start items-center gap-3 cursor-pointer
 }
 
 .creator_username {
@@ -223,6 +223,18 @@
 
 .creator_email {
     @apply text-sm text-gray-500 font-inter
+}
+
+.prompt {
+    @apply my-4 font-satoshi text-sm text-gray-700
+}
+
+.tag_section {
+    @apply flex flex-wrap gap-2
+}
+
+.tag_btn {
+    @apply blue_gradient text-sm font-inter;
 }
 
 /* Form Component */
