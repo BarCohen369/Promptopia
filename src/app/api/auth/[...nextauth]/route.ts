@@ -1,5 +1,5 @@
 import NextAuth, {Profile, Session} from 'next-auth'
-import Google from 'next-auth/providers/google'
+import Google, {GoogleProfile} from 'next-auth/providers/google'
 import {connectToDatabase} from '@utils/database'
 import User from '@models/user'
 import {UserProfile} from '@/types/userTypes'
@@ -35,7 +35,7 @@ const handler = NextAuth({
                             ' ', ''
                         ),
                         email: profile.email,
-                        image: profile.image
+                        image: profile.image || (profile as GoogleProfile).picture
                     })
                 }
                 return true
