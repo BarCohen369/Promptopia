@@ -1,18 +1,16 @@
 import {NextRequest} from 'next/server'
 import {connectToDatabase} from '@utils/database'
 import Prompt from '@models/prompt'
-import { Post } from '@/types/feedTypes'
-import {Params} from 'next/dist/shared/lib/router/utils/route-matcher'
+import {Post} from '@/types/feedTypes'
 
 type GetParams = {
-    req: NextRequest
     params: {
         id: string
     }
 }
 
-export const GET = async ({req, params}: GetParams) => {
-        console.log('params', params)
+export const GET = async (req: NextRequest, {params}: GetParams) => {
+
     try {
         await connectToDatabase()
 
