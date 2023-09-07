@@ -26,7 +26,7 @@ const CreatePrompt = ({}) => {
                 body: JSON.stringify({
                     prompt: post.prompt,
                     tags: post.tags.split(/[\s,#]+/).filter(item => item !== ""),
-                    user: session?.user?.email
+                    user: session?.user?._id
                 })
             })
 
