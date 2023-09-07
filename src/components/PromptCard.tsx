@@ -14,6 +14,7 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
     const handleCopy = () => {
         navigator.clipboard.writeText(post.prompt)
         setCopied(post.prompt)
+        setTimeout(() => setCopied(''), 3000)
     }
 
     return (
@@ -31,10 +32,10 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
 
                 <div className="flex_col">
                     <h3 className={'creator_username'}>
-                        post.creator.username
+                        {post.creator.username}
                     </h3>
                     <p className={'creator_email'}>
-                        post.creator.email
+                        {post.creator.email}
                     </p>
                 </div>
             </section>
@@ -42,8 +43,8 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
             <button className="copy_btn" onClick={handleCopy}>
                 <Image
                     src={copied === post.prompt ?
-                        '/assets/images/tick.svg' :
-                        '/assets/images/copy.svg'}
+                        '/assets/icons/tick.svg' :
+                        '/assets/icons/copy.svg'}
                     alt={'copy'}
                     height={12}
                     width={12}
