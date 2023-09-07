@@ -80,7 +80,7 @@
     @apply text-left head_text
 }
 
-.flex-col {
+.flex_col {
     display: flex;
     flex-direction: column;
 }
@@ -207,6 +207,22 @@
 /* Feed Component */
 .feed {
     @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+}
+
+.creator_data {
+    @apply flex justify-between items-start gap-5
+}
+
+.creator_image_wrapper {
+    @apply flex-1 flex justify-start items-center gap-3 cursor-pointer
+}
+
+.creator_username {
+    @apply font-satoshi font-semibold text-gray-900
+}
+
+.creator_email {
+    @apply text-sm text-gray-500 font-inter
 }
 
 /* Form Component */
