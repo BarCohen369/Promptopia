@@ -2,11 +2,7 @@
 
 import {useEffect, useState} from 'react'
 import {PromptCardList} from '@components/PromptCardList'
-
-export type Post = {
-    prompt: string,
-    tags: string[]
-}
+import {Post} from '@/types/feedTypes'
 
 export const Feed = () => {
     const [searchText, setSearchText] = useState('')
@@ -39,6 +35,11 @@ export const Feed = () => {
                 />
             </form>
 
+            <PromptCardList
+                data={posts}
+                handleTagClick={() => {
+                }}
+            />
         </section>
     )
 }

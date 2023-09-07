@@ -10,8 +10,6 @@ export const GET = async ({req}: { req: NextRequest }) => {
         const propmts = await Prompt.find({})
             .populate('creator') as Post[]
 
-        console.log(propmts)
-
         return new Response(
             JSON.stringify(
                 propmts
