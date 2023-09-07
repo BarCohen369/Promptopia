@@ -3,17 +3,25 @@ import {PromptCard} from '@components/PromptCard'
 
 type Props = {
     data: Post[],
-    handleTagClick: () => void
+    mt: number
+} & CardCallbacks
+
+export type CardCallbacks = {
+    callbacks:{
+        handleTagClick?: (tag: string) => void
+        handleEdit?: () => void
+        handleDelete?: () => void
+    }
 }
 
-export const PromptCardList = ({data, handleTagClick}: Props) => {
+export const PromptCardList = ({data, mt, callbacks}: Props) => {
     return (
-        <ul className={'prompt_layout'}>
+        <ul className={'prompt_layout'} style={{marginTop: `${mt / 4}rem`}}>
             {data.map(post => (
                 <PromptCard
                     key={post._id}
                     post={post}
-                    handleTagClick={handleTagClick}
+                    callbacks={callbacks}
                 />
             ))}
         </ul>

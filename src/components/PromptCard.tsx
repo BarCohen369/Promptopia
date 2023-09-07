@@ -3,14 +3,19 @@
 import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
 import {useState} from 'react'
+import {CardCallbacks} from '@components/PromptCardList'
 
 type CardParams = {
-    handleTagClick: (tag: string) => void
     post: Post
-}
+} & CardCallbacks
 
-export const PromptCard = ({handleTagClick, post}: CardParams) => {
+export const PromptCard = ({ post, callbacks}: CardParams) => {
     const [copied, setCopied] = useState('')
+    const {
+        handleDelete,
+        handleEdit,
+        handleTagClick
+    } = callbacks
     const handleCopy = () => {
         navigator.clipboard.writeText(post.prompt)
         setCopied(post.prompt)
@@ -57,7 +62,7 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
                     <button
                         key={tag}
                         className={'tag_btn'}
-                        onClick={() => handleTagClick(tag)}
+                        onClick={() => handleTagClick && handleTagClick(tag)}
                     >
                         #{tag}
                     </button>
