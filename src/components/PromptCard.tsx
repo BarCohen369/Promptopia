@@ -9,7 +9,7 @@ type CardParams = {
     post: Post
 } & CardCallbacks
 
-export const PromptCard = ({ post, callbacks}: CardParams) => {
+export const PromptCard = ({post, callbacks}: CardParams) => {
     const [copied, setCopied] = useState('')
     const {
         handleDelete,
@@ -45,7 +45,10 @@ export const PromptCard = ({ post, callbacks}: CardParams) => {
                 </div>
             </section>
 
-            <button className="copy_btn" onClick={handleCopy}>
+            <button
+                className="copy_btn"
+                onClick={handleCopy}
+            >
                 <Image
                     src={copied === post.prompt ?
                         '/assets/icons/tick.svg' :
@@ -62,6 +65,7 @@ export const PromptCard = ({ post, callbacks}: CardParams) => {
                     <button
                         key={tag}
                         className={'tag_btn'}
+                        disabled={!handleTagClick}
                         onClick={() => handleTagClick && handleTagClick(tag)}
                     >
                         #{tag}

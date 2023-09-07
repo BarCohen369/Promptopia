@@ -37,8 +37,10 @@ export const Feed = () => {
 
             <PromptCardList
                 data={posts}
-                handleTagClick={() => {
-                }}
+                mt={16}
+                callbacks={
+                    {handleTagClick}
+                }
             />
         </section>
     )
