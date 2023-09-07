@@ -1,9 +1,10 @@
 import {UserProfile} from '@/types/userTypes'
+import {Post} from '@/types/feedTypes'
 
 type ProfileProps = {
     type: 'My'
     description: string
-    data: UserProfile
+    data: Post[]
     handleEdit: () => void
     handleDelete: () => void
 }
