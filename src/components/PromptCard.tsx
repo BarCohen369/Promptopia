@@ -64,7 +64,7 @@ export const PromptCard = ({post, callbacks}: CardParams) => {
                     {handleEdit && (
                         <button
                             className={'edit_btn'}
-                            onClick={handleEdit}
+                            onClick={() => handleEdit(post)}
                         >
                             <Image
                                 src={'/assets/icons/edit.svg'}
@@ -78,7 +78,7 @@ export const PromptCard = ({post, callbacks}: CardParams) => {
                     {handleDelete && (
                         <button
                             className={'delete_btn'}
-                            onClick={handleDelete}
+                            onClick={() => handleDelete(post)}
                         >
                             <Image
                                 src={'/assets/icons/delete.svg'}

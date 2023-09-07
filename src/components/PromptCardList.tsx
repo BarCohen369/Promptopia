@@ -9,8 +9,8 @@ type Props = {
 export type CardCallbacks = {
     callbacks:{
         handleTagClick?: (tag: string) => void
-        handleEdit?: () => void
-        handleDelete?: () => void
+        handleEdit?: (post: Post) => void
+        handleDelete?: (post: Post) => void
     }
 }
 

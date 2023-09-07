@@ -5,13 +5,12 @@ import {useEffect, useState} from 'react'
 import {useSession} from 'next-auth/react'
 import {Post} from '@/types/feedTypes'
 import {fetchPosts} from '@utils/dbFetchFunctions'
+import {useRouter} from 'next/navigation'
 
 const MyProfile = () => {
+    const router = useRouter()
     const {data: session, status} = useSession()
     const [userPosts, setUserPosts] = useState<Post[]>([])
-    const handleEdit = () => {
-
-    }
 
     useEffect(() => {
         if (
@@ -20,7 +19,11 @@ const MyProfile = () => {
             .then(data => setUserPosts(data as Post[]))
     }, [session])
 
-    const handleDelete = async () => {
+    const handleEdit = (post: Post) => {
+        router.push(`/update-post?id=${post._id}`)
+    }
+
+    const handleDelete = async (post: Post) => {
 
     }
 

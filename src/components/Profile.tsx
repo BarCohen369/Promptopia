@@ -5,8 +5,8 @@ type ProfileProps = {
     type: 'My'
     description: string
     data: Post[]
-    handleEdit: () => void
-    handleDelete: () => void
+    handleEdit: (post: Post) => void
+    handleDelete: (post: Post) => void
 }
 
 const Profile = ({type, description, data, handleEdit, handleDelete}: ProfileProps) => {
