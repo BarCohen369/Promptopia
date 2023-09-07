@@ -23,20 +23,24 @@ const MyProfile = () => {
         }
 
         if (status === 'authenticated') fetchPosts()
-    }, [])
+    }, [session?.user?.email, status])
 
 
     const handleDelete = async () => {
 
     }
     return (
-        <Profile
-            type="My"
-            description="Welcome to your personalized profile page"
-            data={userPosts}
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-        />
+        <>
+            {(status === 'authenticated') &&
+                <Profile
+                    type="My"
+                    description="Welcome to your personalized profile page"
+                    data={userPosts}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                />
+            }
+        </>
     )
 }
 
