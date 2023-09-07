@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {DesktopNav} from '@components/DesktopNav'
 import {useEffect, useState} from 'react'
-import {ClientSafeProvider, getProviders, LiteralUnion, signIn, useSession} from 'next-auth/react'
+import {ClientSafeProvider, getProviders, LiteralUnion, signIn, signOut, useSession} from 'next-auth/react'
 // @ts-ignore
 import {BuiltInProviderType} from 'next-auth/providers'
 import {MobileNav} from '@components/MobileNav'
@@ -14,7 +14,7 @@ export const Nav = () => {
     const isUserLoggedIn = status === 'authenticated'
 
     const handleLogout = () => {
-
+        signOut()
     }
 
     const handleLogin = (
