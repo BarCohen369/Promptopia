@@ -137,6 +137,10 @@
     @apply text-sm text-gray-500 font-normal
 }
 
+.profile-prompts-headline {
+    @apply mt-8 text-xl sm:text-2xl font-bold leading-[1.15] text-gray-900
+}
+
 /*endregion*/
 
 
@@ -201,7 +205,7 @@
 }
 
 .prompt_layout {
-    @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3 mt-16;
+    @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */

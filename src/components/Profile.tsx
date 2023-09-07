@@ -1,5 +1,5 @@
-import {UserProfile} from '@/types/userTypes'
 import {Post} from '@/types/feedTypes'
+import {PromptCardList} from '@components/PromptCardList'
 
 type ProfileProps = {
     type: 'My'
@@ -19,7 +19,15 @@ const Profile = ({type, description, data, handleEdit, handleDelete}: ProfilePro
                 {description}
             </p>
 
+            <h3 className={'profile-prompts-headline'}>{type === 'My' ? 'Your' : ''} Prompts</h3>
 
+            <PromptCardList
+                data={data}
+                mt={0}
+                callbacks={
+                    {handleDelete, handleEdit}
+                }
+            />
         </section>
     )
 }

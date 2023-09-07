@@ -22,6 +22,10 @@ export const Feed = () => {
 
     }
 
+    const handleTagClick = (tag: string) => {
+
+    }
+
     return (
         <section className={'feed'}>
             <form className={'search_form'}>
