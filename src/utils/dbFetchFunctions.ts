@@ -1,5 +1,5 @@
 export const fetchPosts = async (id: string) => {
-    console.log('fetching posts')
+    console.log('fetching posts for user ', id)
 
     try {
         const res = await fetch(
@@ -9,7 +9,6 @@ export const fetchPosts = async (id: string) => {
             }
         )
 
-        console.log(res)
         return await res.json()
     } catch (e) {
         console.error(e instanceof Error ? e.message : e)
