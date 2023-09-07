@@ -2,6 +2,7 @@
 
 import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
+import {useState} from 'react'
 
 type CardParams = {
     handleTagClick: () => void
@@ -9,8 +10,13 @@ type CardParams = {
 }
 
 export const PromptCard = ({handleTagClick, post}: CardParams) => {
+    const [copied, setCopied] = useState('')
+    const handleCopy = () => {
+        navigator.clipboard.writeText(post.prompt)
+        setCopied(post.prompt)
+    }
+
     return (
-        <></>
         <li className={'prompt_card'}>
             <section className="creator_data">
                 <div className="creator_image_wrapper">
@@ -32,6 +38,17 @@ export const PromptCard = ({handleTagClick, post}: CardParams) => {
                     </p>
                 </div>
             </section>
+
+            <button className="copy_btn" onClick={handleCopy}>
+                <Image
+                    src={copied === post.prompt ?
+                        '/assets/images/tick.svg' :
+                        '/assets/images/copy.svg'}
+                    alt={'copy'}
+                    height={12}
+                    width={12}
+                />
+            </button>
         </li>
     )
 }
