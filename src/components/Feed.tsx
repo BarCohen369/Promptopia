@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {PromptCardList} from '@components/PromptCardList'
 import {Post} from '@/types/feedTypes'
 
@@ -19,9 +19,13 @@ export const Feed = () => {
 
         fetchPosts()
     }, [])
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('search', e.target.value)
-        setSearchText(e.target.value)
+
+    useEffect(() => {
+            handleSearchChange()
+        }
+    , [searchText])
+
+    const handleSearchChange = () => {
         const results: Post[] = []
 
         posts.forEach(post => {
@@ -35,19 +39,20 @@ export const Feed = () => {
     }
 
     const handleTagClick = (tag: string) => {
-
+        setSearchText(tag)
     }
 
+    // todo style the x button and add esc functionality
     return (
         <section className={'feed'}>
             <form className={'search_form'}>
                 <input
-                    type={'text'}
+                    type={'search'}
                     className={'search_input peer'}
                     placeholder={'Search for a tag or a user...'}
                     required
                     value={searchText}
-                    onChange={handleSearchChange}
+                    onChange={e => setSearchText(e.target.value)}
                 />
             </form>
 
