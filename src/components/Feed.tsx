@@ -44,11 +44,14 @@ export const Feed = () => {
         setSearchText('')
     }
 
+    const handleESC = (e: React.KeyboardEvent) => {
+        if (e.key === 'Escape') setSearchText('')
+    }
+
     const handleTagClick = (tag: string) => {
         setSearchText(tag)
     }
 
-    // todo add esc functionality
     return (
         <section className={'feed'}>
             <form className={'search_form'}>
@@ -58,6 +61,7 @@ export const Feed = () => {
                     placeholder={'Search for a tag or a user...'}
                     value={searchText}
                     onChange={e => setSearchText(e.target.value)}
+                    onKeyDown={handleESC}
                 />
                 <button className={'search_clear_btn'} onClick={clearSearchField}>
                     <Image src={'assets/icons/clear.svg'} alt={'X'} width={16} height={16} style={{display: searchText ? 'block' : 'none'}}/>
