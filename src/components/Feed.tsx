@@ -1,8 +1,9 @@
 "use client"
 
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {PromptCardList} from '@components/PromptCardList'
 import {Post} from '@/types/feedTypes'
+import Image from 'next/image'
 
 export const Feed = () => {
     const [posts, setPosts] = useState<Post[]>([])
@@ -23,7 +24,7 @@ export const Feed = () => {
     useEffect(() => {
             handleSearchChange()
         }
-    , [searchText])
+        , [searchText])
 
     const handleSearchChange = () => {
         const results: Post[] = []
@@ -38,22 +39,29 @@ export const Feed = () => {
         setSearchResults(results)
     }
 
+    const clearSearchField = (e : React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        setSearchText('')
+    }
+
     const handleTagClick = (tag: string) => {
         setSearchText(tag)
     }
 
-    // todo style the x button and add esc functionality
+    // todo add esc functionality
     return (
         <section className={'feed'}>
             <form className={'search_form'}>
                 <input
-                    type={'search'}
+                    type={'text'}
                     className={'search_input peer'}
                     placeholder={'Search for a tag or a user...'}
-                    required
                     value={searchText}
                     onChange={e => setSearchText(e.target.value)}
                 />
+                <button className={'search_clear_btn'} onClick={clearSearchField}>
+                    <Image src={'assets/icons/clear.svg'} alt={'X'} width={16} height={16} style={{display: searchText ? 'block' : 'none'}}/>
+                </button>
             </form>
 
             <PromptCardList
