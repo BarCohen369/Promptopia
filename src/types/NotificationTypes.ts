@@ -6,4 +6,5 @@ export type NotificationObj = {
 export type NotificationContextData = {
     notification: Notification | {}
     setNotification: (notification: Notification | {}) => void
+    setError: (message: string) => void
 }

@@ -11,9 +11,12 @@ const NotificationContext: React.Context<NotificationContextData | {}> = createC
 export const useNotification = () => useContext(NotificationContext)
 export const NotificationProvider = ({children}: ContextProps) => {
     const [notification, setNotification] = useState<NotificationObj | {}>({})
+    const setError = (message : string) => {
+        setNotification({type: 'Error', message})
+    }
 
     return (
-        <NotificationContext.Provider value={{notification, setNotification}}>
+        <NotificationContext.Provider value={{notification, setNotification, setError}}>
             {children}
         </NotificationContext.Provider>
     )
