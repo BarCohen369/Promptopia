@@ -7,16 +7,13 @@ import {NotificationContextData, NotificationObj} from '@/types/NotificationType
 export const Notification = () => {
     const {notification, setNotification} = useNotification() as NotificationContextData
     const {type, message} = notification as NotificationObj
-    const [toggleClose, setToggleClose] = useState(false)
 
     const close = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        setToggleClose(true)
         setNotification({})
     }
 
     setTimeout(() => {
-        setToggleClose(true)
         setNotification({})
     }, 3000)
 
