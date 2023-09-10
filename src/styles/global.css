@@ -290,7 +290,7 @@
 
 /* Notification Component */
 .notification {
-    @apply px-4 py-3 rounded flex fixed top-6 object-center z-10;
+    @apply px-4 py-3 rounded flex fixed top-6 z-10;
 }
 
 .error_notification {
