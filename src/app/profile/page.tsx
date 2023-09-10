@@ -13,7 +13,7 @@ const MyProfile = () => {
     const router = useRouter()
     const {data: session, status} = useSession()
     const [userPosts, setUserPosts] = useState<Post[]>([])
-    const { setError} = useNotification() as NotificationContextData
+    const {setError, setNotification} = useNotification() as NotificationContextData
 
     useEffect(() => {
         if (
@@ -37,6 +37,10 @@ const MyProfile = () => {
             if (res.ok) {
                 const filteredPosts = userPosts.filter(p => p._id !== post._id)
                 setUserPosts(filteredPosts)
+                setNotification({
+                    type: 'Success',
+                    message: 'Post deleted'
+                })
             } else throw new Error(`${res.body}`)
         } catch (e) {
             setError((e as Error).message)

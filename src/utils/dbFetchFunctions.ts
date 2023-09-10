@@ -14,6 +14,7 @@ export const fetchUserPosts = async (id: string): Promise<FeedPost[] | undefined
         return await res.json()
     } catch (e) {
         console.error(e instanceof Error ? e.message : e)
+        throw e as Error
     }
 }
 
@@ -23,5 +24,6 @@ export const fetchAllPosts = async (): Promise<FeedPost[] | undefined> => {
         return await res.json()
     } catch (e) {
         console.error(e instanceof Error ? e.message : e)
+        throw e as Error
     }
 }

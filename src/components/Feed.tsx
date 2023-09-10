@@ -5,15 +5,19 @@ import {PromptCardList} from '@components/PromptCardList'
 import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
 import {fetchAllPosts} from '@utils/dbFetchFunctions'
+import {useNotification} from '@app/contexts/NotificationContext'
+import {NotificationContextData} from '@/types/NotificationTypes'
 
 export const Feed = () => {
     const [posts, setPosts] = useState<Post[]>([])
     const [searchText, setSearchText] = useState('')
     const [searchResults, setSearchResults] = useState<Post[]>([])
+    const {setError} = useNotification() as NotificationContextData
 
     useEffect(() => {
         fetchAllPosts()
             .then(data => setPosts(data as Post[]))
+            .catch(e => setError(e.message))
     }, [])
 
     useEffect(() => {
