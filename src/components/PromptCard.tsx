@@ -5,6 +5,8 @@ import Image from 'next/image'
 import {useState} from 'react'
 import {CardCallbacks} from '@components/PromptCardList'
 import {useRouter} from 'next/navigation'
+import {useNotification} from '@app/contexts/NotificationContext'
+import {NotificationContextData} from '@/types/NotificationTypes'
 
 type CardParams = {
     post: Post
@@ -13,6 +15,7 @@ type CardParams = {
 export const PromptCard = ({post, callbacks}: CardParams) => {
     const router = useRouter()
     const [copied, setCopied] = useState('')
+    const {setNotification} = useNotification() as NotificationContextData
     const {
         handleDelete,
         handleEdit,
@@ -21,6 +24,10 @@ export const PromptCard = ({post, callbacks}: CardParams) => {
     const handleCopy = () => {
         navigator.clipboard.writeText(post.prompt)
         setCopied(post.prompt)
+        setNotification({
+            type: 'Info',
+            message: 'Copied to clipboard'
+        })
         setTimeout(() => setCopied(''), 3000)
     }
 

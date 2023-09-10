@@ -18,7 +18,7 @@ export const Notification = () => {
     setTimeout(() => {
         setToggleClose(true)
         setNotification({})
-    }, 50000)
+    }, 3000)
 
     return (
         <>
