@@ -5,11 +5,14 @@ import {useState} from 'react'
 import {Post} from '@/types/formTypes'
 import {useSession} from 'next-auth/react'
 import {useRouter} from 'next/navigation'
+import {useNotification} from '@app/contexts/NotificationContext'
+import {NotificationContextData} from '@/types/NotificationTypes'
 
 const CreatePrompt = ({}) => {
     const {data: session} = useSession()
     const router = useRouter()
     const [submitting, setSubmitting] = useState(false)
+    const {setError, setNotification} = useNotification() as NotificationContextData
     const [post, setPost] = useState<Post>({
         prompt: '',
         tags: ''
@@ -35,10 +38,14 @@ const CreatePrompt = ({}) => {
                     prompt: '',
                     tags: ''
                 })
+                setNotification({
+                    type: 'Success',
+                    message: 'Prompt created'
+                })
                 router.push('/')
-            }
+            } else throw new Error(`${res.body}`)
         } catch (e) {
-            console.error(e instanceof Error ? e.message : e)
+            setError((e as Error).message)
         } finally {
             setSubmitting(false)
         }

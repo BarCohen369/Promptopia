@@ -3,12 +3,15 @@
 import {Form} from '@components/Form'
 import {useEffect, useState} from 'react'
 import {Post} from '@/types/formTypes'
+import {NotificationContextData} from '@/types/NotificationTypes'
 import {useRouter, useSearchParams} from 'next/navigation'
+import {useNotification} from '@app/contexts/NotificationContext'
 
 const EditPrompt = ({}) => {
     const promptID = useSearchParams().get('id')
     const router = useRouter()
     const [submitting, setSubmitting] = useState(false)
+    const {setError, setNotification} = useNotification() as NotificationContextData
     const [post, setPost] = useState<Post>({
         prompt: '',
         tags: ''
@@ -47,10 +50,14 @@ const EditPrompt = ({}) => {
                     prompt: '',
                     tags: ''
                 })
+                setNotification({
+                    type: 'Success',
+                    message: 'Prompt updated'
+                })
                 router.push('/profile')
-            }
+            } else throw new Error(`${res.body}`)
         } catch (e) {
-            console.error(e instanceof Error ? e.message : e)
+            setError((e as Error).message)
         } finally {
             setSubmitting(false)
         }
