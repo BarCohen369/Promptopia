@@ -1,21 +1,23 @@
 "use client"
 
 import {useState} from 'react'
+import {NotificationObj} from '@/types/NotificationTypes'
 
 type NotificationProps = {
-    type: 'Error' | 'Success' | 'Info'
-    message: string
-}
+    setNotification: (notification: NotificationObj | {}) => void
+} & NotificationObj
 
-export const Notification = ({type, message}: NotificationProps) => {
+export const Notification = ({type, message, setNotification}: NotificationProps) => {
     const [toggleClose, setToggleClose] = useState(false)
     const close = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         setToggleClose(true)
+        setNotification({})
     }
 
     setTimeout(() => {
         setToggleClose(true)
+        setNotification({})
     }, 2500)
 
     return (

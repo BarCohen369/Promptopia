@@ -3,7 +3,7 @@
 import Profile from '@/components/Profile'
 import {useEffect, useState} from 'react'
 import {Post} from '@/types/feedTypes'
-import {fetchPosts} from '@utils/dbFetchFunctions'
+import {fetchUserPosts} from '@utils/dbFetchFunctions'
 import {useSearchParams} from 'next/navigation'
 
 type Params = {
@@ -15,8 +15,9 @@ const CreatorProfile = ({params: {userId}}: { params: Params }) => {
     const [userPosts, setUserPosts] = useState<Post[]>([])
 
     useEffect(() => {
-        fetchPosts(userId)
+        fetchUserPosts(userId)
             .then(data => setUserPosts(data as Post[]))
+            .catch(e => console.error(e))
     }, [])
 
     return (

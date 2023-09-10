@@ -9,18 +9,18 @@ export const metadata = {
 const RootLayout = ({children}: { children: React.ReactNode }) => {
     return (
         <html>
-            <body>
-                <Provider>
-                    <div className="main">
-                        <div className="gradient"/>
-                    </div>
+        <body>
+        <Provider>
+            <div className="main">
+                <div className="gradient"/>
+            </div>
 
-                    <main className="app">
-                        <Nav/>
-                        {children}
-                    </main>
-                </Provider>
-            </body>
+            <main className="app">
+                <Nav/>
+                {children}
+            </main>
+        </Provider>
+        </body>
         </html>
     )
 }
