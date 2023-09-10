@@ -4,12 +4,14 @@ import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
 import {useState} from 'react'
 import {CardCallbacks} from '@components/PromptCardList'
+import {useRouter} from 'next/navigation'
 
 type CardParams = {
     post: Post
 } & CardCallbacks
 
 export const PromptCard = ({post, callbacks}: CardParams) => {
+    const router = useRouter()
     const [copied, setCopied] = useState('')
     const {
         handleDelete,
@@ -22,10 +24,14 @@ export const PromptCard = ({post, callbacks}: CardParams) => {
         setTimeout(() => setCopied(''), 3000)
     }
 
+    const viewCreatorProfile = () => {
+        router.push(`/profile/${post.creator._id}?name=${post.creator.username}`)
+    }
+
     return (
         <li className={'prompt_card'}>
             <div className="flex-between">
-                <section className="creator_data">
+                <section className="creator_data" onClick={viewCreatorProfile}>
                     <div className="creator_image_wrapper">
                         <Image
                             src={post.creator.image || ''}

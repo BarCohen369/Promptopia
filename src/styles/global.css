@@ -218,11 +218,11 @@
 }
 
 .creator_data {
-    @apply flex justify-start items-start gap-5
+    @apply flex justify-start items-start gap-5 cursor-pointer
 }
 
 .creator_image_wrapper {
-    @apply flex justify-start items-center gap-3 cursor-pointer
+    @apply flex justify-start items-center gap-3
 }
 
 .creator_username {

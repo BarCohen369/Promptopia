@@ -1,15 +1,10 @@
-import {Post} from '@/types/feedTypes'
 import {PromptCardList} from '@components/PromptCardList'
+import {CreatorProfileProps, MyProfileProps, ProfileProps} from '@/types/profileTypes'
 
-type ProfileProps = {
-    type: 'My'
-    description: string
-    data: Post[]
-    handleEdit: (post: Post) => void
-    handleDelete: (post: Post) => void
-}
+const Profile = ({type, description, data, ...rest}: ProfileProps) => {
+    const {handleDelete, handleEdit} = rest as MyProfileProps
+    const {name} = rest as CreatorProfileProps
 
-const Profile = ({type, description, data, handleEdit, handleDelete}: ProfileProps) => {
     return (
         <section className={'w-full'}>
             <h1 className={'head_text_left'}>
@@ -19,7 +14,7 @@ const Profile = ({type, description, data, handleEdit, handleDelete}: ProfilePro
                 {description}
             </p>
 
-            <h3 className={'profile-prompts-headline'}>{type === 'My' ? 'Your' : ''} Prompts</h3>
+            <h3 className={'profile-prompts-headline'}>{type === 'My' ? 'Your' : name} Prompts</h3>
 
             <PromptCardList
                 data={data}
