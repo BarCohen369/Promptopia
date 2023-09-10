@@ -1,6 +1,7 @@
 import '@styles/global.css'
 import {Nav} from '@components/Nav'
-import {Provider} from '@components/Provider'
+import {Provider} from '@app/contexts/Provider'
+import {Notification} from '@components/Notfication'
 
 export const metadata = {
     title: 'Promptopia',
@@ -11,6 +12,7 @@ const RootLayout = ({children}: { children: React.ReactNode }) => {
         <html>
         <body>
         <Provider>
+            <Notification/>
             <div className="main">
                 <div className="gradient"/>
             </div>

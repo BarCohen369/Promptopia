@@ -1,14 +1,14 @@
 "use client"
 
 import {useState} from 'react'
-import {NotificationObj} from '@/types/NotificationTypes'
+import {useNotification} from '@app/contexts/NotificationContext'
+import {NotificationContextData, NotificationObj} from '@/types/NotificationTypes'
 
-type NotificationProps = {
-    setNotification: (notification: NotificationObj | {}) => void
-} & NotificationObj
-
-export const Notification = ({type, message, setNotification}: NotificationProps) => {
+export const Notification = () => {
+    const {notification, setNotification} = useNotification() as NotificationContextData
+    const {type, message} = notification as NotificationObj
     const [toggleClose, setToggleClose] = useState(false)
+
     const close = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         setToggleClose(true)
@@ -22,13 +22,13 @@ export const Notification = ({type, message, setNotification}: NotificationProps
 
     return (
         <>
-            {!toggleClose && (
-                <section className={`${type.toLowerCase()}_notification`} role="alert">
+            {notification && (
+                <section className={`${type?.toLowerCase()}_notification`} role="alert">
                     <strong className="font-bold">{type}</strong>
                     &nbsp;
                     <span className="notification_message">{message}</span>
                     <button onClick={close}>
-                        <svg className={`notification_close_icon_${type.toLowerCase()}`} role="button"
+                        <svg className={`notification_close_icon_${type?.toLowerCase()}`} role="button"
                              xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 20 20"><title>Close</title>
                             <path
