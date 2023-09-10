@@ -25,7 +25,7 @@ export const Notification = () => {
             {notification && (
                 <div className={'flex-center'}>
                     <section className={`${type?.toLowerCase()}_notification`} role="alert">
-                        <strong className="font-bold">{type}:</strong>
+                        {type === 'Error' && <strong className="font-bold">{'Error:'}</strong>}
                         &nbsp;
                         <span className="notification_message">{message}</span>
                         <button onClick={close}>
