@@ -4,7 +4,7 @@ import Profile from '@/components/Profile'
 import {useEffect, useState} from 'react'
 import {useSession} from 'next-auth/react'
 import {Post} from '@/types/feedTypes'
-import {fetchPosts} from '@utils/dbFetchFunctions'
+import {fetchUserPosts} from '@utils/dbFetchFunctions'
 import {useRouter} from 'next/navigation'
 
 const MyProfile = () => {
@@ -15,7 +15,7 @@ const MyProfile = () => {
     useEffect(() => {
         if (
             status === 'authenticated' && session?.user?._id
-        ) fetchPosts(session.user._id)
+        ) fetchUserPosts(session.user._id)
             .then(data => setUserPosts(data as Post[]))
     }, [session])
 

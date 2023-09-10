@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react'
 import {PromptCardList} from '@components/PromptCardList'
 import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
+import {fetchAllPosts} from '@utils/dbFetchFunctions'
 
 export const Feed = () => {
     const [posts, setPosts] = useState<Post[]>([])
@@ -11,20 +12,13 @@ export const Feed = () => {
     const [searchResults, setSearchResults] = useState<Post[]>([])
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            const res = await fetch('/api/prompt')
-            const data = await res.json()
-
-            setPosts(data as Post[])
-        }
-
-        fetchPosts()
+        fetchAllPosts()
+            .then(data => setPosts(data as Post[]))
     }, [])
 
     useEffect(() => {
             handleSearchChange()
-        }
-        , [searchText])
+        }, [searchText])
 
     const handleSearchChange = () => {
         const results: Post[] = []
