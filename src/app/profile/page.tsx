@@ -6,17 +6,21 @@ import {useSession} from 'next-auth/react'
 import {Post} from '@/types/feedTypes'
 import {fetchUserPosts} from '@utils/dbFetchFunctions'
 import {useRouter} from 'next/navigation'
+import {useNotification} from '@app/contexts/NotificationContext'
+import {NotificationContextData} from '@/types/NotificationTypes'
 
 const MyProfile = () => {
     const router = useRouter()
     const {data: session, status} = useSession()
     const [userPosts, setUserPosts] = useState<Post[]>([])
+    const { setError} = useNotification() as NotificationContextData
 
     useEffect(() => {
         if (
             status === 'authenticated' && session?.user?._id
         ) fetchUserPosts(session.user._id)
             .then(data => setUserPosts(data as Post[]))
+            .catch(e => setError(e.message))
     }, [session])
 
     const handleEdit = (post: Post) => {
@@ -35,7 +39,7 @@ const MyProfile = () => {
                 setUserPosts(filteredPosts)
             } else throw new Error(`${res.body}`)
         } catch (e) {
-            console.error(e instanceof Error ? e.message : e)
+            setError((e as Error).message)
         }
     }
 
