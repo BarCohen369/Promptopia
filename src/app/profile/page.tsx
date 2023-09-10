@@ -41,7 +41,7 @@ const MyProfile = () => {
                     type: 'Success',
                     message: 'Post deleted'
                 })
-            } else throw new Error(`${res.body}`)
+            } else throw new Error('Failed to delete post')
         } catch (e) {
             setError((e as Error).message)
         }

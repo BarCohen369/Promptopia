@@ -45,6 +45,7 @@ const EditPrompt = ({}) => {
                 })
             })
 
+            console.log(res)
             if (res.ok) {
                 setPost({
                     prompt: '',
@@ -55,8 +56,9 @@ const EditPrompt = ({}) => {
                     message: 'Prompt updated'
                 })
                 router.push('/profile')
-            } else throw new Error(`${res.body}`)
+            } else throw new Error('One or more fields are invalid')
         } catch (e) {
+            console.error(e instanceof Error ? e.message : e)
             setError((e as Error).message)
         } finally {
             setSubmitting(false)

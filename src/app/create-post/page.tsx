@@ -43,7 +43,7 @@ const CreatePrompt = ({}) => {
                     message: 'Prompt created'
                 })
                 router.push('/')
-            } else throw new Error(`${res.body}`)
+            } else throw new Error('One or more fields are invalid')
         } catch (e) {
             setError((e as Error).message)
         } finally {
