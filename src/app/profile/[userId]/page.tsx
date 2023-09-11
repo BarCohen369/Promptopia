@@ -13,7 +13,7 @@ type Params = {
 }
 
 const CreatorProfile = ({params: {userId}}: { params: Params }) => {
-    const name = useSearchParams().get('name')
+    const name = useSearchParams().get('name') || 'NameNotFound'
     const [userPosts, setUserPosts] = useState<Post[]>([])
     const {setError} = useNotification() as NotificationContextData
 
@@ -27,8 +27,8 @@ const CreatorProfile = ({params: {userId}}: { params: Params }) => {
         <>
             <Profile
                 type="Creator"
-                name={name?? 'Creator'}
-                description={`Welcome to ${name?? 'name-not-found'} profile page`}
+                name={name}
+                description={`Welcome to ${name}'s personalized profile page. Explore ${name}'s exceptional prompts and be inspired by the power of their imagination`}
                 data={userPosts}
             />
         </>
