@@ -3,7 +3,7 @@ import {connectToDatabase} from '@utils/database'
 import Prompt from '@models/prompt'
 import { Post } from '@/types/feedTypes'
 
-export const GET = async ({req}: { req: NextRequest }) => {
+export const GET = async () => {
     try {
         await connectToDatabase()
 
