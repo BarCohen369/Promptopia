@@ -5,7 +5,7 @@ import {PromptCardList} from '@components/PromptCardList'
 import {Post} from '@/types/feedTypes'
 import Image from 'next/image'
 import {fetchAllPosts} from '@utils/dbFetchFunctions'
-import {useNotification} from '@app/contexts/NotificationContext'
+import {useNotification} from '@contexts/NotificationContext'
 import {NotificationContextData} from '@/types/NotificationTypes'
 
 export const Feed = () => {

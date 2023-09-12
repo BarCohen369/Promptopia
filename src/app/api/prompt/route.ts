@@ -1,4 +1,3 @@
-import {NextRequest} from 'next/server'
 import {connectToDatabase} from '@utils/database'
 import Prompt from '@models/prompt'
 import { Post } from '@/types/feedTypes'

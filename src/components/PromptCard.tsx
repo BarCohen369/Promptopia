@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {useState} from 'react'
 import {CardCallbacks} from '@components/PromptCardList'
 import {useRouter} from 'next/navigation'
-import {useNotification} from '@app/contexts/NotificationContext'
+import {useNotification} from '@contexts/NotificationContext'
 import {NotificationContextData} from '@/types/NotificationTypes'
 
 type CardParams = {

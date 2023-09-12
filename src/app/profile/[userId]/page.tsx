@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import {Post} from '@/types/feedTypes'
 import {fetchUserPosts} from '@utils/dbFetchFunctions'
 import {useSearchParams} from 'next/navigation'
-import {useNotification} from '@app/contexts/NotificationContext'
+import {useNotification} from '@contexts/NotificationContext'
 import {NotificationContextData} from '@/types/NotificationTypes'
 
 type Params = {

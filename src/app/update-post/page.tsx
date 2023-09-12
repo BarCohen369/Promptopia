@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react'
 import {Post} from '@/types/formTypes'
 import {NotificationContextData} from '@/types/NotificationTypes'
 import {useRouter, useSearchParams} from 'next/navigation'
-import {useNotification} from '@app/contexts/NotificationContext'
+import {useNotification} from '@contexts/NotificationContext'
 
 const EditPrompt = ({}) => {
     const promptID = useSearchParams().get('id')

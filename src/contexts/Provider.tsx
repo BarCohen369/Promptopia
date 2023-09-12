@@ -2,7 +2,7 @@
 
 import {SessionProvider} from 'next-auth/react'
 import {Session} from 'next-auth'
-import {NotificationProvider} from '@app/contexts/NotificationContext'
+import {NotificationProvider} from '@contexts/NotificationContext'
 
 
 export const Provider = ({children, session}: { children: React.ReactNode, session?: Session }) => {

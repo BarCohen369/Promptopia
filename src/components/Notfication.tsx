@@ -1,7 +1,6 @@
 "use client"
 
-import {useState} from 'react'
-import {useNotification} from '@app/contexts/NotificationContext'
+import {useNotification} from '@contexts/NotificationContext'
 import {NotificationContextData, NotificationObj} from '@/types/NotificationTypes'
 
 export const Notification = () => {

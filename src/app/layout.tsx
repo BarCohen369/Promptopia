@@ -1,6 +1,6 @@
 import '@styles/global.css'
 import {Nav} from '@components/Nav'
-import {Provider} from '@app/contexts/Provider'
+import {Provider} from '@contexts/Provider'
 import {Notification} from '@components/Notfication'
 
 export const metadata = {
