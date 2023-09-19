@@ -14,15 +14,17 @@ export const Feed = () => {
     const [searchResults, setSearchResults] = useState<Post[]>([])
     const {setError} = useNotification() as NotificationContextData
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         fetchAllPosts()
             .then(data => setPosts(data as Post[]))
             .catch(e => setError(e.message))
     }, [])
 
+    //  eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
-            handleSearchChange()
-        }, [searchText])
+        handleSearchChange()
+    }, [searchText])
 
     const handleSearchChange = () => {
         const results: Post[] = []
@@ -37,7 +39,7 @@ export const Feed = () => {
         setSearchResults(results)
     }
 
-    const clearSearchField = (e : React.MouseEvent<HTMLButtonElement>) => {
+    const clearSearchField = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         setSearchText('')
     }
@@ -62,7 +64,8 @@ export const Feed = () => {
                     onKeyDown={handleESC}
                 />
                 <button className={'search_clear_btn'} onClick={clearSearchField}>
-                    <Image src={'assets/icons/clear.svg'} alt={'X'} width={16} height={16} style={{display: searchText ? 'block' : 'none'}}/>
+                    <Image src={'assets/icons/clear.svg'} alt={'X'} width={16} height={16}
+                           style={{display: searchText ? 'block' : 'none'}}/>
                 </button>
             </form>
 

@@ -15,6 +15,7 @@ const MyProfile = () => {
     const [userPosts, setUserPosts] = useState<Post[]>([])
     const {setError, setNotification} = useNotification() as NotificationContextData
 
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         if (
             status === 'authenticated' && session?.user?._id

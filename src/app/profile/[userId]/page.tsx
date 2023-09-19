@@ -17,6 +17,7 @@ const CreatorProfile = ({params: {userId}}: { params: Params }) => {
     const [userPosts, setUserPosts] = useState<Post[]>([])
     const {setError} = useNotification() as NotificationContextData
 
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         fetchUserPosts(userId)
             .then(data => setUserPosts(data as Post[]))
