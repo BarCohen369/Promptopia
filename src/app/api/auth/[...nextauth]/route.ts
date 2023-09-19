@@ -10,13 +10,15 @@ declare module 'next-auth' {
     }
 }
 
-const handler = NextAuth({
+export const authOptions = {
     providers: [
         Google({
             clientId: process.env.GOOGLE_CLIENT_ID || '',
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
         })
     ],
+
+    secret: process.env.NEXTAUTH_SECRET,
 
     callbacks: {
         async session({session}: { session: Session }): Promise<Session> {
@@ -56,6 +58,8 @@ const handler = NextAuth({
             }
         }
     }
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export {handler as GET, handler as POST}

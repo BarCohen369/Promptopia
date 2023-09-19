@@ -7,7 +7,7 @@ import {NotificationProvider} from '@contexts/NotificationContext'
 
 export const Provider = ({children, session}: { children: React.ReactNode, session?: Session }) => {
     return (
-        <SessionProvider session={session || null}>
+        <SessionProvider session={session || undefined}>
             <NotificationProvider>
                 {children}
             </NotificationProvider>
