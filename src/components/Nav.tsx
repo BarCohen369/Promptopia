@@ -8,10 +8,12 @@ import {ClientSafeProvider, getProviders, LiteralUnion, signIn, signOut, useSess
 // @ts-ignore
 import {BuiltInProviderType} from 'next-auth/providers'
 import {MobileNav} from '@components/MobileNav'
+import {useRouter} from 'next/navigation'
 
 export const Nav = () => {
     const {data: session, status} = useSession()
     const isUserLoggedIn = status === 'authenticated'
+    const router = useRouter()
 
     const handleLogout = () => {
         signOut()
@@ -20,7 +22,8 @@ export const Nav = () => {
     const handleLogin = (
         providerId: LiteralUnion<BuiltInProviderType>, callbackUrl: string
     ) => {
-        signIn(providerId, {callbackUrl})
+        // signIn(providerId, {callbackUrl})
+        router.push('/disabled-login')
     }
 
     const [providers, setProviders] = useState<

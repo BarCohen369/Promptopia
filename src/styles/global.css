@@ -324,3 +324,16 @@
 .notification_close_icon_info {
     @apply notification_close_icon text-blue-700
 }
+
+/* region Temp Login Placeholder */
+.message {
+    @apply text-center text-2xl font-bold;
+}
+
+.links {
+    @apply flex justify-center items-center gap-4 mt-4;
+}
+.link {
+    @apply text-base font-inter text-blue-800 hover:text-blue-700 font-medium;
+}
+/* endregion */

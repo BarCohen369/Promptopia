@@ -55,7 +55,7 @@ const EditPrompt = ({}) => {
                     type: 'Success',
                     message: 'Prompt updated'
                 })
-                router.push('/profile')
+                router.push('/disabled-login/user-profile'/* '/profile' */)
             } else throw new Error('One or more fields are invalid')
         } catch (e) {
             console.error(e instanceof Error ? e.message : e)
